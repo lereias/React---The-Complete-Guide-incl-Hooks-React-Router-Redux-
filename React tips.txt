@@ -1,0 +1,238 @@
+Building Single-Page-Applications (SPAs) with React
+- React can be used to control parts of HTML pages or
+  entire pages
+* "Widget" approach on a multi-page-application
+* (Some) pages are still rendered on and served by a
+  backend server
+
+- React can also be used to control the entire frontend
+  of a web application
+* "Single-Page-Application" (SPA) approach
+* Server only sends one HTML page, thereafter, React
+  takes over and controls the UI
+
+
+- React.js
+-- Lean and focused component-based UI library 
+-- Certain features (e.g. routing) are added via community
+   packages
+
+- Angular
+-- Complete component-based UI framework, packed with
+   features
+-- Uses TypeScript
+-- Can be overkill for smaller projects
+
+- Vue.js
+-- Complete component-based UI framework, includes most
+   core features
+-- A bit less popular than React & Angular
+
+
+* React is all about "Components"
+
+
+* React code is just JavaScript code
+
+
+- index.js
+-- the version of this code is first file executed
+* index.js will be transformed to a version where it is
+  supported by browsers
+* importing a css file works in index.js because it will
+  be transformed before delivering to the browser
+
+- react and react-dom package/module
+-- combined is the entire react library
+
+- createRoot()
+-- creates the main entry point/ main hook to the
+   indicated html element
+* 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+** this case, the html element has an ID of root and if
+   we check index.html, it is assigned to a blank div
+   element
+
+import App from './App';
+- imports App.js as App
+- this is the app component
+* importing a js file does not need the ".js" extension
+
+root.render(<App />)
+- creates the entire app
+- replaces the content of element indicated in createRoot()
+  with the app that you have created
+
+
+index.html
+- the only html file that inside the react project
+* it is a single-page-app so only one file
+- <div id="root"></div>
+-- this div where the react-based UI will be injected to
+
+
+App.js
+- the file being imported in index.js
+- returns an HTML
+* this only works because of JSX
+
+
+JSX
+- JavaScript XML
+- HTML in a JS file
+
+- go to the localhost:3000 where you started the react
+  project
+- right click then select "inspect element"
+- go to sources tab
+- as you can see there is a folder named static/js
+-- all that is in here is the transformed js files by
+   react
+
+
+How React works
+- declarative method
+-- define the entire end state
+
+- imperative method
+-- step-by-step creation of the element like in vanilla
+   JS
+
+
+* build components with a separate file
+
+
+
+* App.js will become the root component that has direct
+  connection to index.js
+
+
+* naming convention of JS files are camel-case with first
+  letter of the name uppercase and defines its content
+
+
+* a component in react is just a JS function that returns
+  an HTML Code
+
+
+* you can only return one root element
+** return <div>Date</div><div><h2>Title</h2><div>Amount</div></div>
+*** this won't work
+
+**
+return (
+  <div>
+    <div>Date</div>
+    <div>
+      <h2>Title</h2>
+      <div>Amount</div>
+    </div>
+  </div>
+);
+*** this will work cause all components are inside of a
+    single div (the root element)
+
+
+Adding Basic CSS Styling
+- add css file at same directory with the component
+- import it to the component
+*
+import "./<name of css file with extention .css>";
+
+
+* you can add vanilla js codes inside the function
+  component to do dynamic values and other things
+
+
+* Date objects (new Date()) cannot be displayed in JSX
+** need to include at end .toISOString()
+*** ugly but works
+
+
+* components can't just use data stored in other
+  components
+
+
+- props
+-- properties
+-- custom attributes in our custom components
+
+* to access the values of the attributes that we added
+  to our custom components, we need to add a single
+  parameter to our function in our component file
+** this can be any name but it is advised to use "props"
+** this holds a key-value pair, each representing the added
+   attribute
+
+*
+ExpenseItem.js:
+
+function ExpenseItem(props) {
+  return (
+    <div className="expense-item">
+      <div>{props.date.toISOString()}</div>
+      <div className="expense-item__description">
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">{props.amount}</div>
+      </div>
+    </div>
+  );
+}
+
+
+* it is recommended to put complex expressions into a
+  variable and include that variable in the JSX
+
+
+* props are transfered to direct component. If needed to be
+  passed to the component of direct component, you must
+  pass it from the direct component to that component
+
+
+* you can assign the prop to a variable by doing this:
+App.js:
+<Expenses expenses={expenses}>
+
+Expenses.js:
+function Expenses({expenses}) {return expenses}
+** the value of the attribute is put into the expenses
+   variable. 
+** It is a variable because it is inside of "{}".
+** We are not accessing the props but rather assigning
+   each and every prop to a variable
+
+
+* every custom components will not be shown in the HTML
+  document in the DevTools of the browser but only its
+  content
+
+
+* import React from "react"; can be seen in past projects.
+  It is needed to do JSX. In modern projects, it is omitted
+  cause even without it we can do JSX.
+
+React.createElement(
+    "<name of element>",
+    <the attributes>,
+    <direct child elements>
+  )
+- this is ran under the hood by JSX
+- it creates the desired result with all of its elements
+*
+JSX:
+return (
+  <div>
+  <h2>Let's get started!</h2>
+  <Expenses expenses={expenses} />
+  </div>
+);
+
+JSX under the hood:
+React.createElement(
+  "div",
+  {},
+  React.createElement("h2", {}, "Let's get started!"),
+  React.createElement(Expenses, { items: expenses })
+)
+   

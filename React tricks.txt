@@ -1,0 +1,72 @@
+npx create-react-app <name of project>
+- creates a react project with the given name
+
+
+npm start
+- runs your project in localhost:3000
+
+* to stop the server type "ctrl+c"
+
+
+npm install
+- install the modules/packages in package.json
+
+
+* 
+src/components/ExpenseItem.js:
+function ExpenseItem() {
+  return <h2>Expense item!</h2>;
+}
+
+export default ExpenseItem;
+
+App.js:
+import ExpenseItem from "./components/ExpenseItem";
+
+function App() {
+  return (
+    <div>
+      <h2>Let's get started!</h2>
+      <p>This is also visible!</p>
+      <ExpenseItem></ExpenseItem>
+    </div>
+  );
+}
+
+export default App;
+** custom components start with an uppercase char
+
+
+* to put your variables or just simple expression to JSX,
+  use "{}" and put it in there
+** works both in attributes and content of element
+
+
+{props.children}
+- including this to the wrapper/container component in the
+  return statement as the content will enable using this
+  component as a wrapper
+* Card.js
+import "./Card.css";
+
+function Card(props) {
+  return <div className="card">{props.children}</div>;
+}
+
+export default Card;
+
+
+* to enable the assignment of a className attribute on a
+  custom component, you must do the following:
+
+import "./Card.css";
+
+function Card(props) {
+  const classes = "card " + props.className;
+  return <div className={classes}>{props.children}</div>;
+}
+
+export default Card;
+
+** the className indicated on the custom component will
+   be put on props.className

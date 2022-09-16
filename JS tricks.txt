@@ -1,0 +1,29 @@
+map()
+- an array function
+- will apply a function to each element in array and
+  returns all of it as new elements for new array
+*
+const numbers = [1,2,3];
+
+const doubleNumArray = numbers.map((num) => {
+  return num * 2;
+})
+
+console.log(numbers); //remain unchanged
+console.log(doubleNumArray); //[2,4,6]
+
+
+.toLocaleString(<language>,<specificity of date>)
+* built-in with vanilla JS, no need to install anything
+- function that can be used by all Date objects (new Date())]
+- changes how specific should the date be also the language
+*
+const date = new Date(<the date>);
+date.toLocaleString("en-US", {month: "long"});
+** this will output the month of date in en-US language
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+
+
+.getFullYear()
+* built-in with vanilla JS, no need to install anything
+- gives out the year of the Date object (new Date())

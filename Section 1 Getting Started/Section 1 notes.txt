@@ -1,0 +1,144 @@
+What is React.js?
+- React
+-- https://reactjs.org/
+-- A Javascript library for building user interfaces
+
+Mobile apps and desktop apps
+- feel very "reactive": Things happen instantly
+- you do not wait for new pages to load or actions to
+  start
+
+Web apps
+- traditionally, you click a link and wait for a new page
+  to load
+- you click a button and wait for some action to complete
+- response and request
+* JavaScript can help on that
+
+Javascript
+- runs in the browser - on the loaded page
+- can manipulate the HTML structure (DOM) of the page
+- no (visible) request to the server required, no need to
+  wait for a new HTML page as a response
+
+React.js
+- a client-side JavaScript library
+- all about building modern, reactive user interfaces for
+  the web
+- declarative, component-focused approach
+
+
+Why React Instead of "Just JavaScript"?
+- download the resource that is included for this lecture
+
+Imparative approach
+- describing each and every step you do in the code
+- way that we will do if you do "Just JavaScript"
+
+React
+- creates small blocks, small containers
+- end result is showed instead of step-by-step
+
+
+Building Single-Page-Applications (SPAs) with React
+- React can be used to control parts of HTML pages or
+  entire pages
+* "Widget" approach on a multi-page-application
+* (Some) pages are still rendered on and served by a
+  backend server
+
+- React can also be used to control the entire frontend
+  of a web application
+* "Single-Page-Application" (SPA) approach
+* Server only sends one HTML page, thereafter, React
+  takes over and controls the UI
+
+
+React.js Alternatives
+- React.js
+-- Lean and focused component-based UI library 
+-- Certain features (e.g. routing) are added via community
+   packages
+
+- Angular
+-- Complete component-based UI framework, packed with
+   features
+-- Uses TypeScript
+-- Can be overkill for smaller projects
+
+- Vue.js
+-- Complete component-based UI framework, includes most
+   core features
+-- A bit less popular than React & Angular
+
+* to go deeper into it go to this link:
+  https://academind.com/tutorials/angular-vs-react-vs-vue-my-thoughts
+
+About this course & course outline
+- 3 main categories
+-- basics and foundation
+--- core features / fundamentals
+* components and building UIs
+* working with events and data: "props" and "state"
+* styling React Apps and components
+* introduction into "React Hooks"
+
+-- advanced concepts
+--- building for production
+* side effects, "refs" and more React Hooks
+* React's Context API & Redux (3rd party library)
+* Forms, HTTP Requests and "Custom Hooks"
+* Routing, Deployment, NextJS and More
+
+-- summaries and refreshers
+--- optimizing your Time
+--- to clarify Things
+* JavaScript Refresher
+* ReactJS Summary
+
+- Contents
+-- Theory / Small Demos & Examples
+-- More Realistic (Bigger) Example Projects
+-- Challenges & Exercises
+
+
+Taking this course: two options
+- Standard approach (recommended)
+-- start with lecture 1 in section 1 and go through the
+   course step by step
+-- skip JavaScript refresher module if you don't need it
+-- use React summary module at the end to summarize what
+   you learned or to refresh knowledge in the future
+
+- Summary approach (if you're in a hurry)
+-- skip forward to the React summary module
+-- gptionally also take JavaScript refresher module if
+   you need it
+-- go through the entire course after going through the
+   summary module and / or if you got more time in the
+   future
+
+
+How to get the most out of the course
+- watch the videos
+* choose your pace
+
+- code along and practice
+* also without me telling you
+
+- debug errors and explore solutions
+* also use code attachments
+
+- help each other and learn together
+* discord, Q&A Board
+
+
+Setting Up The Course Dev Environment (Code Editor)
+- Visual Studio Code (recommendation)
+-- free code editor
+-- amazing
+-- extensions
+--- Prettier
+* change default formatter in setting to Prettier
+--- Material Icon theme
+* change the file icons

@@ -1,0 +1,220 @@
+Next-Gen JavaScript
+- let, const, arrow functions, etc.
+- React is built upon this
+
+
+let and const
+- ways to create a variable
+* var is a legacy way to do it
+- let
+-- variables values
+
+- const
+-- constant values
+-- most common
+
+
+Arrow functions
+- another syntax to create JS functions
+*
+const myFnc = () => {
+  ...
+}
+* no more issues with the this keyword!
+
+
+Exports and Imports (Modules)
+- you can export content
+- you can import content from another file
+*
+person.js:
+
+const person = {
+  name:"Max"
+}
+
+export default person
+
+* 
+utility.js:
+
+export const clean = () => {...}
+export const baseData = 10;
+
+*
+app.js:
+
+import person from "./person.js"
+import prs from "./person.js"
+
+import {baseData} from "./utility.js"
+import {clean as Clean} from "./utility.js"
+
+import * as bundled from "./utility.js"
+**
+first pair of imports can be customed name because it is
+exported default (default export)
+**
+second pair of imports are imported by the name of
+variable exported. It cannot be rename cause its not
+exported default but can assign an alias (named export)
+**
+last import imports all named exports as a bundle.
+"bundled" is an alias and can be replaced with another
+***
+you can access one of the named exports in the bundle by:
+bundled.namedExport
+
+
+Classes
+- blueprints or objects
+-- properties
+--- variables
+-- methods
+--- functions in classes
+
+*
+class Person {
+  name = "Max"
+  call = () => {...}
+}
+
+** how to instantiate
+const myPerson = new Person()
+
+** how to use method in class
+myPerson.call()
+
+** how to display the value of property in class
+console.log(myPerson.name)
+
+** inheritance
+class Person extends Master
+*** if constructor exist on the class that inherits from
+    another class, use "super()" inside of it
+
+- constructor()
+-- method in a class that will run immediately after
+   there is an instance created
+
+
+Classes, Properties and Methods
+- properties are like "variables attached to classes /
+  objects"
+-- ES6
+constructor() {
+  this.myProperty = "value"
+}
+
+-- ES7
+myProperty = "value"
+* this method does not need "super()" anymore to actually
+  inherit the property and methods
+
+- methods are like "functions attached to classes / objects"
+-- ES6
+myMethod(){...}
+
+-- ES7
+myMethod = () => {...}
+
+- do it on JSBin
+* the instructor use ES6/Babel instead of JS to make it 
+  actually work but it works now on JS
+
+
+Spread and Rest Operators
+- spread and rest are represented with "..."
+-- spread
+--- used to split up array elements OR object properties
+*
+const newArray = [...oldArray, 1, 2]
+const new Object = {...oldObject, newProp: 5}
+*
+const numbers = [1,2,3];
+const newNumbers = [...numbers, 4];
+
+console.log(newNumbers);
+
+result: [1,2,3,4]
+
+-- rest
+--- used to merge a list of function arguments into an
+    array
+*
+function sortArgs(...args){
+  return args.sort()
+}
+
+
+Destructuring
+- easily extract array elements or object properties and
+  store them in variables
+* can be not all elements / properties
+** this is the difference with spread
+
+* array destructuring
+[a, b] = ["Hello", "Max"]
+console.log(a) // Hello
+console.log(b) // Max
+
+* object destructuring
+{name} = {name: "Max", age: 28}
+console.log(name) // Max
+console.log(age) // undefined
+
+
+Reference and primitive types refresher
+- Reference type
+-- objects and arrays
+*
+const person = {
+  name: "Max"
+};
+
+const secondPerson = person;
+
+person.name = "Manu";
+
+console.log(secondPerson); // name is now Manu
+** secondPerson points to person, meaning that if there
+   are changes to person, the value of secondPerson also
+   changes
+
+- primitive types
+-- string, numbers, booleans, etc.
+*
+const num = 1;
+const num2 = num;
+const num = 2;
+console.log(num2); //1
+** num2 will copy the original value of name and does not
+   hold connection to num
+
+* to actually create a new object with same properties with
+  the other object
+const person2 = {
+  name: "Max"
+};
+
+const secondPerson2 = {...person2};
+
+person2.name = "Manu";
+
+console.log(secondPerson2); //name still Max
+
+
+Refreshing array functions
+- map()
+-- an array function
+-- will apply a function to each element in array and
+   returns all of it as new elements for new array
+*
+const numbers = [1,2,3];
+
+const doubleNumArray = numbers.map((num) => {
+  return num * 2;
+})
+
+console.log(numbers); //remain unchanged
+console.log(doubleNumArray); //[2,4,6]
