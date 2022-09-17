@@ -1,76 +1,62 @@
-npx create-react-app <name of project>
-- creates a react project with the given name
+Module Introduction
+
+User Interaction and State
+- Making Apps Interactive and Reactive
+
+- handling events
+- updating the UI and working with "state"
+- a closer look at components and state
 
 
-npm start
-- runs your project in localhost:3000
-
-* to stop the server type "ctrl+c"
-
-
-npm install
-- install the modules/packages in package.json
+Listening to Events and Working with Event Handlers
+- create a button in ExpenseItem.js just right before Card
+  ending tag
 
 
-* 
-src/components/ExpenseItem.js:
-function ExpenseItem() {
-  return <h2>Expense item!</h2>;
-}
+on<someevent>={<function to run>}
+- prop/custom attribute
+- a special prop that is used to listen to events
+- instead of adding an eventListener like in vanilla JS to
+  check the events that happens to the elements, In react
+  we use this
 
-export default ExpenseItem;
+*
+In ExpenseItem.js function ExpenseItem:
 
-App.js:
-import ExpenseItem from "./components/ExpenseItem";
+const ExpenseItem = (props) => {
+  const clickHandler = () => {
+    console.log("Updated!!!!");
+  };
 
-function App() {
   return (
-    <div>
-      <h2>Let's get started!</h2>
-      <p>This is also visible!</p>
-      <ExpenseItem></ExpenseItem>
-    </div>
+    <Card className="expense-item">
+      <ExpenseDate date={props.date} />
+      <div className="expense-item__description">
+        <h2>{title}</h2>
+        <div className="expense-item__price">{props.amount}</div>
+      </div>
+      <button onClick={clickHandler}>Change Title</button>
+    </Card>
   );
-}
-
-export default App;
-** custom components start with an uppercase char
+};
 
 
-* to put your variables or just simple expression to JSX,
-  use "{}" and put it in there
-** works both in attributes and content of element
+How Component Functions are Executed
+* putting the prop value to a variable, using the variable
+  instead of the prop value, and changing the value of
+  variable when event occurs, will not change the value
+
+* custom components are like function calls up until there
+  is no more functions (components) left inside of it
 
 
-{props.children}
-- including this to the wrapper/container component in the
-  return statement as the content will enable using this
-  component as a wrapper
-* Card.js
-import "./Card.css";
+Working with "State"
 
-function Card(props) {
-  return <div className="card">{props.children}</div>;
-}
+state
+- not originally a React concept
 
-export default Card;
-
-
-* to enable the assignment of a className attribute on a
-  custom component, you must do the following:
-
-import "./Card.css";
-
-function Card(props) {
-  const classes = "card " + props.className;
-  return <div className={classes}>{props.children}</div>;
-}
-
-export default Card;
-
-** the className indicated on the custom component will
-   be put on props.className
-
+* custom components are not called again after initial
+  call (transformation) by default
 
 import { useState } from 'react';
 - a React Hook
@@ -116,6 +102,17 @@ const ExpenseItem = (props) => {
    show the previous value
 
 
+A closer look at the "useState" Hook
+
+useState
+* per component instance
+
+
+Adding Form Inputs
+- add NewExpense folder in components
+- add the necessary files in there
+
+
 Listening to User Input
 - use the onChange prop
 * this not only can be used with inputs but also with
@@ -127,6 +124,14 @@ const titleChangeHandler = (event) => {
   console.log(event.target.value);
 };
 ** store it in useState rather than variable
+
+
+Working with multiple States
+* useState() can be used more than once in one component
+  and each of them are independent from each other
+
+
+* event.target.value will always return a string
 
 
 Using One State Instead (And What's Better)
@@ -180,6 +185,11 @@ const submitHandler = (event) => {
 };
 
 
+Adding Two-way binding
+- listening to event to change state and change the value
+  in JSX based on the state
+
+
 Child-to-Parent Component Communication (Bottom-Up)
 * use a custom prop that will store the function pointer in
   order to be called inside the child component
@@ -218,6 +228,31 @@ export default NewExpense;
 *** this will automatically be passed to the parent
     component
 
+
+* props can only be passed with parent to direct child
+
+
 Lifting State Up
 - passing the state from child to parent to be used in
-  parent or by another child by passing it via props
+  parent or by another child by passing it via 
+* communication can only be done from parent to child and
+  child to parent
+
+
+Controlled vs Uncontrolled Components
+
+Controlled Components
+- when a value used in a component is passed on to a parent
+  component through props or a value is received from the 
+  parent component
+
+
+Presentational vs Stateful Components
+* Stateless vs Stateful Components
+* Dumb vs Smart Components
+- Stateful Component
+-- holds a state
+
+- Presentational Component
+-- does not have state
+-- most components does not have states 

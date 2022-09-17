@@ -27,3 +27,7 @@ date.toLocaleString("en-US", {month: "long"});
 .getFullYear()
 * built-in with vanilla JS, no need to install anything
 - gives out the year of the Date object (new Date())
+
+
+event.preventDefault();
+- prevents the normal flow of event such as form submission

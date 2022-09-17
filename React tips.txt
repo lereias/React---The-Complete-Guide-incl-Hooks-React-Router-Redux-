@@ -235,4 +235,88 @@ React.createElement(
   React.createElement("h2", {}, "Let's get started!"),
   React.createElement(Expenses, { items: expenses })
 )
-   
+
+
+on<someevent>={<function to run>}
+- prop/custom attribute
+- a special prop that is used to listen to events
+- instead of adding an eventListener like in vanilla JS to
+  check the events that happens to the elements, In react
+  we use this
+
+*
+In ExpenseItem.js function ExpenseItem:
+
+const ExpenseItem = (props) => {
+  const clickHandler = () => {
+    console.log("Updated!!!!");
+  };
+
+  return (
+    <Card className="expense-item">
+      <ExpenseDate date={props.date} />
+      <div className="expense-item__description">
+        <h2>{title}</h2>
+        <div className="expense-item__price">{props.amount}</div>
+      </div>
+      <button onClick={clickHandler}>Change Title</button>
+    </Card>
+  );
+};
+
+
+How Component Functions are Executed
+* putting the prop value to a variable, using the variable
+  instead of the prop value, and changing the value of
+  variable when event occurs, will not change the value
+
+* custom components are like function calls up until there
+  is no more functions (components) left inside of it
+
+
+* custom components are not called again after initial
+  call (transformation) by default
+
+
+* useState() can be used more than once in one component
+  and each of them are independent from each other
+
+
+* event.target.value will always return a string
+
+
+Adding Two-way binding
+- listening to event to change state and change the value
+  in JSX based on the state
+
+
+* props can only be passed with parent and direct child
+
+
+* communication can only be done from parent to child and
+  child to parent
+
+
+Controlled vs Uncontrolled Components
+
+Controlled Components
+- when a value used in a component is passed on to a parent
+  component through props or a value is received from the 
+  parent component
+
+
+Presentational vs Stateful Components
+* Stateless vs Stateful Components
+* Dumb vs Smart Components
+- Stateful Component
+-- holds a state
+
+- Presentational Component
+-- does not have state
+-- most components does not have states
+
+
+* use useState() only if you will do two-way binding
+
+* useState() optionally can receive an initial state value
+  as an argument

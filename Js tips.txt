@@ -209,3 +209,6 @@ const secondPerson2 = {...person2};
 person2.name = "Manu";
 
 console.log(secondPerson2); //name still Max
+
+
+* event.target.value will always return a string
