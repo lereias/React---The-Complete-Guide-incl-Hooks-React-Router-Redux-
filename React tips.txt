@@ -339,3 +339,40 @@ Presentational vs Stateful Components
 
 
 *make css styles scoped and not entirely global
+
+
+Understanding React Error Messages
+- find the file that it shows error
+- find the line that it shows error
+
+
+Analyzing Code Flow and Warnings
+* for errors that does not output errors (e.g. logical
+  error), track the code flow
+* check DevTools as well
+
+
+Working with Breakpoints
+* to add breakpoint in sources tab in DevTools, simply
+  click the line number in the file
+
+
+Working with Breakpoints
+* to add breakpoint in sources tab in DevTools, simply
+  click the line number in the file
+* can click step into next function call (one that has a 
+  down arrow pointing to a circle) to go to next
+  function call
+* can click step over next function call (one that has an
+  arrow arcing on top of a circle) to finish the entire
+  function calling
+* can click resume scrip execution to stop the breakpoints
+
+
+Using the React DevTools
+- DevTools for react projects
+- install React DevTools extension in browser
+- Components and Profiler Tab should be included, reload if
+  not
+- Components
+-- Shows React Components
