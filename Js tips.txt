@@ -212,3 +212,7 @@ console.log(secondPerson2); //name still Max
 
 
 * event.target.value will always return a string
+
+
+* use enteredValue.trim().length === 0 to check if input
+  is blank

@@ -332,3 +332,10 @@ Presentational vs Stateful Components
 * if you are wanting to display a child component in 
   component depending on a condition, always focus using 
   useState() on parent component
+
+
+* use enteredValue.trim().length === 0 to check if input
+  is blank
+
+
+*make css styles scoped and not entirely global

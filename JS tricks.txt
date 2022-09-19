@@ -38,3 +38,16 @@ Math.max()
   and outputs the maximum from it
 * using spread operator (...) is best if you have array of
   numbers
+
+
+.trim()
+- trims out blank characters
+* can be used to check if input is just blank
+** enteredValue.trim().length === 0
+
+
+styled.button``
+- tag template literal
+- a special kind of function
+*
+const Button = styled.button``;

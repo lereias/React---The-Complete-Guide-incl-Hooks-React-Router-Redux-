@@ -277,3 +277,97 @@ export default ChartBar;
 ** style attribute in JSX requires a JavaScript Object
    keys being the name of the style
 ** styles with "-" will be converted to camel casing
+
+
+.trim()
+- trims out blank characters
+* can be used to check if input is just blank
+** enteredValue.trim().length === 0
+
+
+* when you want to set style based on condition, use
+  ternary operator
+** 
+style={{ color: !isValid ? "red" : "black" }}
+
+
+Setting CSS Classes Dynamically
+* instead of using inline-styles, make css classes dynamic
+- use template literal
+*
+<div className={`form-control ${!isValid ? "invalid" : ""}`}>
+
+
+- Styled Components
+-- 3rd party package
+-- applies styles directly to components
+-- https://styled-components.com/
+-- creates dynamically unique generated classes that will
+   wrap the styles that you have indicated in it
+
+styled.button``
+- tag template literal
+- a special kind of function
+*
+const Button = styled.button``;
+
+*
+styled.button`
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #8b005d;
+  color: white;
+  background: #8b005d;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:active {
+    background: #ac0e77;
+    border-color: #ac0e77;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.26);
+  }
+`
+** if styles is being applied to the element itself, no
+   need for selector
+** if using pseudo-element, or anything else that the 
+   element itself is involved, replace element selector 
+   with "&"
+
+* you can use props in styled-components
+**
+border: 1px solid ${(props) => (props.invalid ? "red" : "#ccc")};
+
+* you can use normal media query syntax in styled-components
+
+
+CSS Modules
+- only supported by projects that acually supports it
+- https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/
+- rename css file to <name>.module.css
+- import it with your desired name
+*
+import styles from "./Button.module.css";
+
+*
+const Button = (props) => {
+  return (
+    <button type={props.type} className={styles.button} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
+};
+
+*css modules creates unique class names
+
+* for classes with "-", use bracket notation:
+  styles["form-control"]
+
+* if multiple classes:
+<div
+  className={`${styles["form-control"]} ${!isValid && styles.invalid}`}
+>
