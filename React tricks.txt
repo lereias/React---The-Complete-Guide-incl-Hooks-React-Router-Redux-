@@ -221,3 +221,59 @@ export default NewExpense;
 Lifting State Up
 - passing the state from child to parent to be used in
   parent or by another child by passing it via props
+
+
+Rendering Lists of Data
+- access the props.expenses (name of prop) to get the array
+- use .map() to apply things to each and every element in
+  array
+*
+{props.expenses.map((expense) => (
+  <ExpenseItem
+    title={expense.title}
+    amount={expense.amount}
+    date={expense.date}
+  />
+))}
+
+
+Outputting Conditional Content
+- Conditional Content
+-- rendering output based on a given condition
+
+
+* using && and put the component to be rendered. If first
+  condition is true, it will be rendered
+
+
+Adding Dynamic Styles
+*
+import React from "react";
+
+import "./ChartBar.css";
+
+const ChartBar = (props) => {
+  let barFillHeight = "0%";
+
+  if (props.max > 0) {
+    barFillHeight = Math.round((props.value / props.maxValue) * 100) + "%";
+  }
+
+  return (
+    <div className="chart-bar">
+      <div className="chart-bar__inner">
+        <div
+          className="chart-bar__fill"
+          style={{ height: barFillHeight }}
+        ></div>
+      </div>
+      <div className="chart-bar__label">{props.label}</div>
+    </div>
+  );
+};
+
+export default ChartBar;
+
+** style attribute in JSX requires a JavaScript Object
+   keys being the name of the style
+** styles with "-" will be converted to camel casing

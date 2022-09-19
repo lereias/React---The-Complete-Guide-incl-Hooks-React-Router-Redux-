@@ -320,3 +320,15 @@ Presentational vs Stateful Components
 
 * useState() optionally can receive an initial state value
   as an argument
+
+
+* you should always add a unique id to components you 
+  create by .map()
+
+
+* we can store JSX values in variables
+
+
+* if you are wanting to display a child component in 
+  component depending on a condition, always focus using 
+  useState() on parent component

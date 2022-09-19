@@ -1,0 +1,210 @@
+Rendering Lists and Conditional content
+- working with really dynamic content
+
+- outputting dynamic lists of content
+- rendering content under certain conditions
+
+
+Rendering Lists of Data
+- access the props.expenses (name of prop) to get the array
+- use .map() to apply things to each and every element in
+  array
+*
+{props.expenses.map((expense) => (
+  <ExpenseItem
+    title={expense.title}
+    amount={expense.amount}
+    date={expense.date}
+  />
+))}
+
+
+Using Stateful Lists
+- use useState() from "react" dependency
+- make the initial array of expenses for as the default value
+  of useState()
+- add the new expense create from expenseform.js by using
+  function return in the state updating function
+*
+setExpenses((prevExpenses) => {
+  return [expense, ...prevExpenses];
+});
+** function is done in order to always get the most current
+   snapshot
+
+
+Understanding "Keys"
+- div is rendered and walkthroughs the array and Updated
+  again in our previous execution of array useState
+* error "keys" is showing because we should state where we 
+  should add the new element array
+* use a prop to apply a unique id per component created
+  using the .map()
+* index is not helpful to make components unique
+* you should always add a unique id to components you 
+  create by .map()
+
+
+Outputting Conditional Content
+- Conditional Content
+-- rendering output based on a given condition
+
+
+* using && and put the component to be rendered. If first
+  condition is true, it will be rendered
+
+
+* we can store JSX values in variables
+
+
+*
+let expensesContent = <p>No expenses found.</p>;
+
+if (filteredExpenses.length > 0) {
+  expensesContent = filteredExpenses.map((expense) => (
+    <ExpenseItem
+      key={expense.id}
+      title={expense.title}
+      amount={expense.amount}
+      date={expense.date}
+    />
+  ));
+}
+
+return (
+  <Card className="expenses">
+    <ExpensesFilter year={year} onSelectYear={selectYearHandler} />
+    {expensesContent}
+  </Card>
+);
+
+
+Adding Conditional Return Statements
+
+
+Adding A Chart
+- Chart.js:
+import React from "react";
+import ChartBar from "./ChartBar";
+import "./Chart.css";
+
+const Chart = (props) => {
+  return (
+    <div className="chart">
+      {props.dataPoints.map((dataPoint) => (
+        <ChartBar
+          key={dataPoint.label}
+          value={dataPoint.value}
+          maxValue={null}
+          label={dataPoint.label}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default Chart;
+
+
+Adding Dynamic Styles
+*
+import React from "react";
+
+import "./ChartBar.css";
+
+const ChartBar = (props) => {
+  let barFillHeight = "0%";
+
+  if (props.max > 0) {
+    barFillHeight = Math.round((props.value / props.maxValue) * 100) + "%";
+  }
+
+  return (
+    <div className="chart-bar">
+      <div className="chart-bar__inner">
+        <div
+          className="chart-bar__fill"
+          style={{ height: barFillHeight }}
+        ></div>
+      </div>
+      <div className="chart-bar__label">{props.label}</div>
+    </div>
+  );
+};
+
+export default ChartBar;
+
+** style attribute in JSX requires a JavaScript Object
+   keys being the name of the style
+** styles with "-" will be converted to camel casing
+
+
+Wrap Up and Next Steps
+- create ExpensesChart.js that will render Chart component
+  in Expenses folder
+* ExpensesChart.js:
+import React from "react";
+
+import Chart from "../Chart/Chart";
+
+const ExpensesChart = (props) => {
+  const chartDataPoints = [
+    { label: "Jan", value: 0 },
+    { label: "feb", value: 0 },
+    { label: "Mar", value: 0 },
+    { label: "Apr", value: 0 },
+    { label: "May", value: 0 },
+    { label: "Jun", value: 0 },
+    { label: "Jul", value: 0 },
+    { label: "Aug", value: 0 },
+    { label: "Sep", value: 0 },
+    { label: "Oct", value: 0 },
+    { label: "Nov", value: 0 },
+    { label: "Dec", value: 0 },
+  ];
+
+  for (const expense of props.expenses) {
+    const expenseMonth = expense.date.getMonth(); //starting at 0 => January => 0
+    chartDataPoints[expenseMonth].value += expense.amount;
+  }
+
+  return <Chart dataPoints={chartDataPoints} />;
+};
+
+export default ExpensesChart;
+
+** create the array of objects (charDataPoints) that will be
+   passed to Chart component to create the ChartBar 
+   components
+
+** update of the value property is done by doing the for-of
+   loop
+
+- import ExpensesChart.js in Expenses.js
+
+- in Chart.js do this:
+const dataPointValues = props.dataPoints.map((dataPoint) => dataPoint.value);
+const totalMaximum = Math.max(...dataPointValues);
+
+return (
+  <div className="chart">
+    {props.dataPoints.map((dataPoint) => (
+      <ChartBar
+        key={dataPoint.label}
+        value={dataPoint.value}
+        maxValue={totalMaximum}
+        label={dataPoint.label}
+      />
+    ))}
+  </div>
+);
+
+Math.max()
+- function that require number values separated with ","
+  and outputs the maximum from it
+* using spread operator (...) is best if you have array of
+  numbers
+
+* in ExpenseForm.js change enteredAmount to +enteredAmount
+  in submitHandler function so that it will be a number
+  rather than a string

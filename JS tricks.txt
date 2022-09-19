@@ -31,3 +31,10 @@ date.toLocaleString("en-US", {month: "long"});
 
 event.preventDefault();
 - prevents the normal flow of event such as form submission
+
+
+Math.max()
+- function that require number values separated with ","
+  and outputs the maximum from it
+* using spread operator (...) is best if you have array of
+  numbers
