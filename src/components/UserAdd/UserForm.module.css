@@ -1,0 +1,56 @@
+.form {
+  color: #dec05e;
+
+  border-radius: 12px;
+}
+
+.form label {
+  display: block;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  margin-bottom: 10px;
+}
+
+.form input {
+  margin-bottom: 24px;
+  width: 100%;
+  padding: 5px 0 5px 5px;
+
+  border-radius: 12px;
+
+  color: #222;
+  font-size: 16px;
+  font-weight: 600;
+
+  background-color: #ebd99e;
+  border: none;
+
+  transition: all cubic-bezier(1, 0, 0, 1) 0.3s;
+}
+
+.form input:focus {
+  outline: none;
+  box-shadow: 0 0 3px 2px rgb(235, 217, 158, 0.7);
+  transform: scale(1.025);
+}
+
+.form button {
+  margin-top: 36px;
+}
+
+.form .invalid label {
+  color: red;
+}
+
+.form .invalid input {
+  background-color: rgb(250, 128, 114);
+  border-color: red;
+}
+
+.form .invalid input:focus {
+  outline: none;
+  box-shadow: 0 0 3px 2px rgb(250, 128, 114, 0.7);
+  transform: scale(1.025);
+}

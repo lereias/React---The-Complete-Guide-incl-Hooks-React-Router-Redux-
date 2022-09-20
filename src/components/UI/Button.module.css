@@ -1,0 +1,20 @@
+.button {
+  width: fit-content;
+
+  background-color: #777;
+  color: #fcf9ef;
+
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  padding: 5px 20px;
+
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #888;
+}
