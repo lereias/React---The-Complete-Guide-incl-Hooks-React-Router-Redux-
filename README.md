@@ -6,5 +6,5 @@ all about the React course of Maximilian Schwarzmuller/Academind
 Where all files pertaining to the entirety of the course are included
 
 ### user-adder-lereias
-Where all files pertaining to my version of the User adder simple project in Section 8__
+Where all files pertaining to my version of the User adder simple project in Section 8  
 My Demo: https://www.youtube.com/watch?v=ybTMkDPvB9M
